@@ -145,9 +145,10 @@ export const Navbar = ({ navItems, navMenuItems }: NavbarProps) => {
         <NavbarItem className='hidden sm:flex gap-2'>
           <ThemeSwitch />
         </NavbarItem>
-        <NavbarItem>
+        {/* Temporarily removed language switcher */}
+        {/* <NavbarItem>
           <LocaleSwitcherFull />
-        </NavbarItem>
+        </NavbarItem> */}
       </NavbarContent>
 
       <NavbarContent className='md:hidden basis-1 pl-4' justify='end'>
@@ -172,9 +173,10 @@ export const Navbar = ({ navItems, navMenuItems }: NavbarProps) => {
             </Button>
           )}
         </NavbarItem>
-        <NavbarItem>
+        {/* Temporarily removed mobile language switcher */}
+        {/* <NavbarItem>
           <LocaleSwitcher />
-        </NavbarItem>
+        </NavbarItem> */}
         <NavbarItem>
           <ThemeSwitch />
         </NavbarItem>
