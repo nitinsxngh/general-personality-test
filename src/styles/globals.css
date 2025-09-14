@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h3 {
+  @apply text-xl;
+}
+
+.articlePage blockquote {
+  @apply p-4 my-4 border-s-4 border-secondary bg-gray-100 dark:bg-gray-800;
+  p {
+    @apply text-xl italic leading-relaxed;
+  }
+}
+
+.articlePage a {
+  @apply underline;
+}
+
+.articlePage ul {
+  @apply list-disc pl-6;
+}
+
+/* Print Styles */
+@media print {
+  .print\\:hidden {
+    display: none !important;
+  }
+  
+  .print\\:block {
+    display: block !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+    color: #000;
+    background: #fff;
+  }
+  
+  .bg-white,
+  .bg-gray-900,
+  .bg-primary-50,
+  .bg-primary-900 {
+    background: #fff !important;
+  }
+  
+  .text-default-700,
+  .text-default-300,
+  .text-default-900,
+  .text-default-100 {
+    color: #000 !important;
+  }
+  
+  .border-gray-200,
+  .border-gray-700,
+  .border-primary-200,
+  .border-primary-800 {
+    border-color: #ccc !important;
+  }
+  
+  .shadow-sm {
+    box-shadow: none !important;
+  }
+  
+  .rounded-lg {
+    border-radius: 0 !important;
+  }
+  
+  .space-y-8 > * + * {
+    margin-top: 1.5rem !important;
+  }
+  
+  .space-y-12 > * + * {
+    margin-top: 2rem !important;
+  }
+  
+  .mb-6 {
+    margin-bottom: 1rem !important;
+  }
+  
+  .mb-8 {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .p-6,
+  .lg\\:p-8 {
+    padding: 1rem !important;
+  }
+  
+  .prose {
+    max-width: none !important;
+  }
+  
+  .prose p {
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6 {
+    margin-top: 1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+}
