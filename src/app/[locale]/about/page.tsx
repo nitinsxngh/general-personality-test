@@ -56,7 +56,7 @@ export default function AboutPage({ params: { locale } }: Props) {
           <strong>For Recruiters:</strong> Find the perfect candidates by matching 
           personality traits with your company culture and job requirements. Reduce 
           hiring time, improve employee retention, and build stronger teams with 
-          candidates who are truly aligned with your organization's values.
+          candidates who are truly aligned with your organization&apos;s values.
         </p>
         <br />
         <p>

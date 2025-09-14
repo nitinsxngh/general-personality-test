@@ -97,12 +97,12 @@ export default function Home({ params: { locale } }: Props) {
               </span>
             </h1>
             <p className={subtitle({ class: 'mt-6 max-w-3xl mx-auto text-xl' })}>
-              "Because the first step to success is knowing who you are."
+              &ldquo;Because the first step to success is knowing who you are.&rdquo;
             </p>
             <p className={subtitle({ class: 'mt-4 max-w-3xl mx-auto' })}>
               Before we teach skills, we help you understand your strengths. 
               Psychometric assessments uncover your personality, aptitude, and hidden potential 
-              — so your career path isn't guesswork, it's clarity.
+              — so your career path isn&apos;t guesswork, it&apos;s clarity.
             </p>
             
             <div className='flex flex-col sm:flex-row gap-4 justify-center mt-10'>
@@ -149,7 +149,7 @@ export default function Home({ params: { locale } }: Props) {
           <div className='text-center mb-16'>
             <h2 className={title({ size: 'md' })}>The ILC Advantage</h2>
             <p className={subtitle({ class: 'mt-4 max-w-2xl mx-auto' })}>
-              "Don't just choose a career — choose the one made for you."
+              &ldquo;Don&apos;t just choose a career — choose the one made for you.&rdquo;
             </p>
           </div>
           
@@ -317,7 +317,7 @@ export default function Home({ params: { locale } }: Props) {
             Ready to Discover Your True Potential?
           </h2>
           <p className={subtitle({ class: 'mt-4 mb-8' })}>
-            Take our comprehensive psychometric tests and unlock the career path that's truly made for you
+            Take our comprehensive psychometric tests and unlock the career path that&apos;s truly made for you
           </p>
           
           <div className='flex flex-col sm:flex-row gap-4 justify-center'>

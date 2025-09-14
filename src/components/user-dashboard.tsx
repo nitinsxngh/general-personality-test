@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Card, CardBody, CardHeader } from '@nextui-org/card';
 import { Button } from '@nextui-org/button';
 import { Chip } from '@nextui-org/react';
@@ -14,13 +14,7 @@ export const UserDashboard: React.FC = () => {
   const [testResults, setTestResults] = useState<Report[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (user) {
-      loadUserResults();
-    }
-  }, [user]);
-
-  const loadUserResults = async () => {
+  const loadUserResults = useCallback(async () => {
     if (!user) return;
     
     try {
@@ -32,7 +26,13 @@ export const UserDashboard: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [user]);
+
+  useEffect(() => {
+    if (user) {
+      loadUserResults();
+    }
+  }, [user, loadUserResults]);
 
   const formatDate = (timestamp: number) => {
     return new Date(timestamp).toLocaleDateString('en-US', {

@@ -1,14 +1,15 @@
 import * as React from 'react';
+import Image from 'next/image';
 import { IconSvgProps } from '@/types';
 
 // https://icon-sets.iconify.design
 
 export const Logo = ({ size = 36, width, height, ...props }: IconSvgProps) => (
-  <img
+  <Image
     src="https://www.ilc.limited/logo.svg"
     alt="ILC Logo"
-    height={size || height}
-    width={size || width}
+    height={size || height || 36}
+    width={size || width || 36}
     {...(props as any)}
   />
 );
