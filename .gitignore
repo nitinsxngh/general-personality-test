@@ -102,6 +102,9 @@ dist
 .out
 .storybook-out
 
+# Contentlayer
+.contentlayer
+
 # Temporary folders
 tmp/
 temp/
@@ -115,3 +118,9 @@ temp/
 *.njsproj
 *.sln
 *.sw?
+
+# Lock files (keep pnpm-lock.yaml, but ignore others if needed)
+# pnpm-lock.yaml - keep this for dependency locking
+
+# Patch files
+patches/
