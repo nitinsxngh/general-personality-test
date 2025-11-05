@@ -17,7 +17,7 @@ import {
 } from '@nextui-org/react';
 import { useAuth } from '@/contexts/AuthContext';
 import { EyeFilledIcon, EyeSlashFilledIcon } from '@nextui-org/shared-icons';
-import { GoogleIcon } from './icons';
+import { GoogleIcon, LockIcon } from './icons';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -162,6 +162,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onSuccess
                   {error}
                 </div>
               )}
+
+              {/* Security Message */}
+              <div className="flex items-center gap-2 text-sm text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 p-3 rounded-lg border border-green-200 dark:border-green-800">
+                <LockIcon size={18} className="text-green-600 dark:text-green-400 flex-shrink-0" />
+                <span className="font-medium">Your Data is Secure through Encryption</span>
+              </div>
 
               <Button
                 type="submit"

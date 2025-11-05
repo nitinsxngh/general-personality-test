@@ -17,12 +17,26 @@ export default function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false);
   const [showCookieConsentSettings, setShowCookieConsentSettings] =
     useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const storedCookieConsent = localStorage.getItem('cookie_consent');
-    if (!storedCookieConsent) {
-      setShowBanner(true);
-    }
+    // Ensure this only runs on the client side
+    setMounted(true);
+    
+    // Check for cookie consent after component mounts
+    const checkCookieConsent = () => {
+      if (typeof window !== 'undefined') {
+        const storedCookieConsent = localStorage.getItem('cookie_consent');
+        if (!storedCookieConsent) {
+          // Small delay to ensure proper rendering
+          setTimeout(() => {
+            setShowBanner(true);
+          }, 300);
+        }
+      }
+    };
+
+    checkCookieConsent();
   }, []);
 
   const handleAllowCookies = () => {
@@ -40,16 +54,21 @@ export default function CookieBanner() {
     setShowCookieConsentSettings(true);
   };
 
+  // Don't render until mounted to avoid SSR issues
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <>
       <Modal
         isOpen={showBanner}
         placement='bottom'
         onOpenChange={setShowBanner}
-        // isDismissable={false}
-        // isKeyboardDismissDisabled
+        isDismissable={false}
+        isKeyboardDismissDisabled
         hideCloseButton
-        // backdrop='transparent'
+        backdrop='opaque'
       >
         <ModalContent>
           <ModalHeader className='flex flex-col gap-1'>

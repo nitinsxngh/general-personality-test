@@ -22,6 +22,7 @@ import { Button, Card, CardBody, CardHeader, Divider } from '@nextui-org/react';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { Chip, Tooltip } from '@nextui-org/react';
 import NextLink from 'next/link';
+import CookieBanner from '@/components/cookie-consent';
 
 interface Props {
   params: { locale: string };
@@ -344,6 +345,8 @@ export default function Home({ params: { locale } }: Props) {
         </div>
       </div>
 
+      {/* Cookie Banner - Only shows on landing page */}
+      <CookieBanner />
     </section>
   );
 }

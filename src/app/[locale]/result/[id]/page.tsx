@@ -13,6 +13,7 @@ import { supportEmail } from '@/config/site';
 import ShareBar from '@/components/share-bar';
 import { DomainTabs } from './domain-tabs';
 import { Chip } from '@nextui-org/react';
+import { CareerButton } from './career-button';
 
 export async function generateMetadata({
   params: { locale }
@@ -100,8 +101,9 @@ const Results = ({ report, showExpanded }: ResultsProps) => {
         </Snippet>
       </div>
 
-      {/* Share Bar */}
-      <div className='flex justify-end w-full mb-8 print:hidden'>
+      {/* Share Bar and Career Button */}
+      <div className='flex flex-col sm:flex-row justify-between items-center gap-4 w-full mb-8 print:hidden'>
+        <CareerButton resultId={report.id} />
         <ShareBar report={report} />
       </div>
 
