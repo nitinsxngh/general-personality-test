@@ -3,21 +3,16 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { 
   User, 
-  signInWithEmailAndPassword, 
-  createUserWithEmailAndPassword, 
-  signInWithPopup,
   signInWithCustomToken,
   signOut, 
   onAuthStateChanged 
 } from 'firebase/auth';
-import { auth, googleProvider } from '@/lib/firebase';
+import { auth } from '@/lib/firebase';
 
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  signIn: (email: string, password: string) => Promise<void>;
-  signUp: (email: string, password: string) => Promise<void>;
-  signInWithGoogle: () => Promise<void>;
+  beginLogin: (returnTo?: string) => void;
   logout: () => Promise<void>;
 }
 
@@ -74,28 +69,29 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
   }, []);
 
-  const signIn = async (email: string, password: string) => {
-    await signInWithEmailAndPassword(auth, email, password);
-  };
-
-  const signUp = async (email: string, password: string) => {
-    await createUserWithEmailAndPassword(auth, email, password);
-  };
-
-  const signInWithGoogle = async () => {
-    await signInWithPopup(auth, googleProvider);
+  const beginLogin = (returnTo?: string) => {
+    if (typeof window === 'undefined') return;
+    const rt = returnTo || window.location.href;
+    window.location.assign(
+      `https://auth.ilc.limited/login?returnTo=${encodeURIComponent(rt)}`
+    );
   };
 
   const logout = async () => {
+    // Clear local Firebase state, then clear the shared session cookie via ilc-auth.
     await signOut(auth);
+    if (typeof window !== 'undefined') {
+      const returnTo = window.location.origin;
+      window.location.assign(
+        `https://auth.ilc.limited/logout?returnTo=${encodeURIComponent(returnTo)}`
+      );
+    }
   };
 
   const value = {
     user,
     loading,
-    signIn,
-    signUp,
-    signInWithGoogle,
+    beginLogin,
     logout,
   };
 

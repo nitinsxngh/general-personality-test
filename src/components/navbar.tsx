@@ -26,7 +26,6 @@ import { usePathname } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@nextui-org/button';
-import { AuthModal } from './auth-modal';
 
 interface NavbarProps {
   navItems: { label: string; href: string }[];
@@ -35,10 +34,9 @@ interface NavbarProps {
 
 export const Navbar = ({ navItems, navMenuItems }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showAuthModal, setShowAuthModal] = useState(false);
   const pathname = usePathname();
   const locale = useLocale();
-  const { user, loading, logout } = useAuth();
+  const { user, loading, logout, beginLogin } = useAuth();
 
   const isCurrentPath = (link: string): boolean => {
     if (link === '/') {
@@ -138,7 +136,7 @@ export const Navbar = ({ navItems, navMenuItems }: NavbarProps) => {
               size="sm"
               color="primary"
               variant="solid"
-              onClick={() => setShowAuthModal(true)}
+              onClick={() => beginLogin()}
             >
               Sign In
             </Button>
@@ -171,7 +169,7 @@ export const Navbar = ({ navItems, navMenuItems }: NavbarProps) => {
               size="sm"
               color="primary"
               variant="solid"
-              onClick={() => setShowAuthModal(true)}
+              onClick={() => beginLogin()}
             >
               Sign In
             </Button>
@@ -228,13 +226,6 @@ export const Navbar = ({ navItems, navMenuItems }: NavbarProps) => {
         </div>
       </NavbarMenu>
 
-      <AuthModal
-        isOpen={showAuthModal}
-        onClose={() => setShowAuthModal(false)}
-        onSuccess={() => {
-          setShowAuthModal(false);
-        }}
-      />
     </NextUINavbar>
   );
 };
