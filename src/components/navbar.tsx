@@ -38,7 +38,7 @@ export const Navbar = ({ navItems, navMenuItems }: NavbarProps) => {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const pathname = usePathname();
   const locale = useLocale();
-  const { user, logout } = useAuth();
+  const { user, loading, logout } = useAuth();
 
   const isCurrentPath = (link: string): boolean => {
     if (link === '/') {
@@ -117,7 +117,9 @@ export const Navbar = ({ navItems, navMenuItems }: NavbarProps) => {
         justify='end'
       >
         <NavbarItem className='hidden sm:flex gap-2'>
-          {user ? (
+          {loading ? (
+            <span className="text-sm text-default-500">Signing in...</span>
+          ) : user ? (
             <div className="flex items-center gap-2">
               <span className="text-sm text-default-600">
                 {user.email}
@@ -153,7 +155,9 @@ export const Navbar = ({ navItems, navMenuItems }: NavbarProps) => {
 
       <NavbarContent className='md:hidden basis-1 pl-4' justify='end'>
         <NavbarItem>
-          {user ? (
+          {loading ? (
+            <span className="text-sm text-default-500">Signing in...</span>
+          ) : user ? (
             <Button
               size="sm"
               variant="light"
