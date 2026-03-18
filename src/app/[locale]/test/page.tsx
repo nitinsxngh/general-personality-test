@@ -6,6 +6,8 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 import { TestLanguageSwitch } from './test-language-switch';
 import { ProtectedRoute } from '@/components/protected-route';
 
+export const dynamic = 'force-dynamic';
+
 const questionLanguages = getInfo().languages;
 
 interface Props {

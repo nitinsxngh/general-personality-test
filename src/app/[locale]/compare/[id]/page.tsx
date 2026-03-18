@@ -4,6 +4,8 @@ import { title } from '@/components/primitives';
 import { DomainComparePage } from './domain';
 import { BarChartCompare } from '@/components/bar-chart-generic';
 
+export const dynamic = 'force-dynamic';
+
 interface ComparePageProps {
   params: {
     id: string;

@@ -15,6 +15,8 @@ import { DomainTabs } from './domain-tabs';
 import { Chip } from '@nextui-org/react';
 import { CareerButton } from './career-button';
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({
   params: { locale }
 }: {

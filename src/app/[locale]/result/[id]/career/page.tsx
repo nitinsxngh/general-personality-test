@@ -6,6 +6,8 @@ import { CareerRecommendations } from './career-recommendations';
 import { title } from '@/components/primitives';
 import { BackButton } from './back-button';
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({
   params: { locale }
 }: {

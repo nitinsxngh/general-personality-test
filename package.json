@@ -1,6 +1,14 @@
 {
   "name": "bigfive-web-next",
   "version": "0.0.1",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@firebase/util",
+      "contentlayer2",
+      "esbuild",
+      "protobufjs"
+    ]
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
