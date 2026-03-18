@@ -37,8 +37,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     let attemptedSso = false;
+    const authInitTimeout = window.setTimeout(() => setLoading(false), 6000);
 
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      window.clearTimeout(authInitTimeout);
       setUser(user);
 
       if (!user && !attemptedSso) {
@@ -66,7 +68,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setLoading(false);
     });
 
-    return unsubscribe;
+    return () => {
+      window.clearTimeout(authInitTimeout);
+      unsubscribe();
+    };
   }, []);
 
   const signIn = async (email: string, password: string) => {
