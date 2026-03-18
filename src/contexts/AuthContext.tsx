@@ -44,10 +44,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (!user && !attemptedSso) {
         attemptedSso = true;
         try {
+          const controller = new AbortController();
+          const timeout = window.setTimeout(() => controller.abort(), 4000);
+
           const res = await fetch('/api/auth/customToken', {
             method: 'POST',
-            credentials: 'include'
-          });
+            credentials: 'include',
+            signal: controller.signal
+          }).finally(() => window.clearTimeout(timeout));
+
           const data = await res.json();
           if (res.ok && data?.customToken) {
             await signInWithCustomToken(auth, data.customToken);
